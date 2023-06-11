@@ -1,13 +1,21 @@
 import React from 'react';
 import { Switch, Route, BrowserRouter } from 'react-router-dom';
-import { StylesProvider } from '@material-ui/core/styles';
+import {
+  StylesProvider,
+  createGenerateClassName,
+} from '@material-ui/core/styles';
 import Landing from './components/Landing';
 import Pricing from './components/Pricing';
-// marketing
+
+// generate class name makes the css processer shortname to mApp instead some random name to prevent css colission
+const generateClassName = createGenerateClassName({
+  productionPrefix: 'mApp',
+});
+
 export default () => {
   return (
     <div>
-      <StylesProvider>
+      <StylesProvider generateClassName={generateClassName}>
         <BrowserRouter>
           <Switch>
             <Route exact path="/pricing" component={Pricing} />
