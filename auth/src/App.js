@@ -4,23 +4,25 @@ import {
   StylesProvider,
   createGenerateClassName,
 } from '@material-ui/core/styles';
-import Landing from './components/Landing';
-import Pricing from './components/Pricing';
+import SignIn from './components/Signin';
+import SignUp from './components/Signup';
 
-// generate class name makes the css processer shortname -
-// - to mApp instead some random name to prevent css colission
 const generateClassName = createGenerateClassName({
-  productionPrefix: 'mApp',
+  productionPrefix: 'authApp',
 });
 
-export default ({ history }) => {
+export default ({ history, onSignIn }) => {
   return (
     <div>
       <StylesProvider generateClassName={generateClassName}>
         <Router history={history}>
           <Switch>
-            <Route exact path="/pricing" component={Pricing} />
-            <Route exact path="/" component={Landing} />
+            <Route path="/auth/signin">
+              <SignIn onSignIn={onSignIn} />
+            </Route>
+            <Route path="/auth/signup">
+              <SignUp onSignIn={onSignIn} />
+            </Route>
           </Switch>
         </Router>
       </StylesProvider>

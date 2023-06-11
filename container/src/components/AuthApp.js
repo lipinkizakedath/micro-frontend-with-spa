@@ -1,8 +1,8 @@
-import { mount } from 'marketing/MarketingApp';
+import { mount } from 'auth/AuthApp';
 import React, { useRef, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 
-function MarketingApp() {
+function AuthApp({ onSignIn }) {
   const ref = useRef(null);
   const history = useHistory();
 
@@ -15,6 +15,7 @@ function MarketingApp() {
           history.push(nextPathName);
         }
       },
+      onSignIn,
     });
 
     history.listen(onParentNavigate);
@@ -23,4 +24,4 @@ function MarketingApp() {
   return <div ref={ref} />;
 }
 
-export default MarketingApp;
+export default AuthApp;
