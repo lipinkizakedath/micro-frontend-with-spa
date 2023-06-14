@@ -6,7 +6,6 @@ const mount = (element) => {
   app.mount(element);
 };
 
-// if in dev environment
 if (process.env.NODE_ENV === 'development') {
   const devRoot = document.querySelector('#_dashboard-dev-root');
   if (devRoot) {
